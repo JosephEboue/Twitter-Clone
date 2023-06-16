@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: firebase-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: firebase
+  template:
+    metadata:
+      labels:
+        app: firebase
+    spec:
+      containers:
+        - name: firebase
+          image: gcr.io/firebase-project/firebase-hosting
+          envFrom:
+            - secretRef:
+                name: firebase-credentials

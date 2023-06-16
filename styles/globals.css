@@ -25,3 +25,9 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+@layer components {
+  .hoverEffect {
+      @apply hover:bg-[#181818] rounded-full cursor-pointer transition duration-300
+  }
+}

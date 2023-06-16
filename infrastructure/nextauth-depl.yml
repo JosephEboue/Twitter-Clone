@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextauth-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nextauth
+  template:
+    metadata:
+      labels:
+        app: nextauth
+    spec:
+      containers:
+      - name: nextauth
+        image: greggiles/nextauth:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: NEXTAUTH_URL
+          value: "http://localhost:3000"
+

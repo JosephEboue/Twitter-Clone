@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nextauth-ingress
+spec:
+  rules:
+    - host: next-auth.js.org 
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: nextauth-service
+                port:
+                  number: 80
